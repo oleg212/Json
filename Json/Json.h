@@ -17,6 +17,7 @@ public:
 		Value* prev = cur;
 		GoBack();
 		while (cur->getdata() != prev) {
+			if (cur->GetDepth() == 1) break;
 			prev = cur;
 			GoBack();
 		}
@@ -36,13 +37,13 @@ public:
 		cur->SetContent(_content);
 	}
 	bool isempty() { return path.empty(); }
+	string show() {
+		return cur->GetKey() + ":" + cur->GetContent() + '\n';
+	}
 };
 
 class Json {
 	Value* Root;
-	Pointer* p;
-
-
 	int count_elems(string s) {
 		int res = 0;		
 		int size = s.size();
@@ -72,14 +73,14 @@ class Json {
 		return res;
 	}
 public:
-
-	Json() 
-	{
-		Root = nullptr;
-
+	Pointer* p;
+	Json() {Root = nullptr;}
+	~Json() { 
+		delete Root; 
+		delete p;
 	}
 	friend ostream& operator <<(ostream& out, Json& v) {
-		out << "\n{" << endl << *v.Root << endl << "}\n" << endl;
+		out << "\n{" << endl << *v.Root << "}\n" << endl;
 		return out;
 	}
 	friend istream& operator>>(istream& istr, Json& json)
@@ -100,7 +101,7 @@ public:
 		if (temp.find('{') != -1) {
 			type = 3;
 			
-			json.Root=(new ValueInt(key,depth));
+			json.Root=(new ValueArr(key,depth));
 			depth++;
 			rb = 1;
 		}
@@ -136,8 +137,8 @@ public:
 			if (temp.find('{') != -1) { 
 				type = 3;
 
-				if (rb==0)json.p->AddNext(new ValueInt(key,depth));
-				else json.p->AddRight(new ValueInt(key,depth));
+				if (rb==0)json.p->AddNext(new ValueArr(key,depth));
+				else json.p->AddRight(new ValueArr(key,depth));
 				rb = 1;
 				depth++;
 			}
@@ -160,7 +161,39 @@ public:
 				}
 			}
 		}
+
+
 		return istr;
+	}
+	Value* GetCur() { return p->GetCur(); }
+	void GoNext() {
+		if (GetCur()->getnext() != nullptr)p->GoNext();
+		else throw - 1;
+	}
+	void GoRight() {
+		if (GetCur()->getdata()!=nullptr) 
+		{ p->GoRight(); }
+		else { throw - 1; }
+		}
+	void GoBack() {
+		if (!p->isempty()) p->GoBack();
+		else throw - 1;
+	}
+	void GoUp() {
+		if (!p->isempty()) p->GoUp();
+		else throw - 1;
+	}
+	void AddNext(Value* _next) {
+		p->AddNext(_next);
+	}
+	void AddRight(Value* _right) {
+		p->AddRight(_right);
+	}
+	void SetContent(int _content) {
+		p->SetContent(_content);
+	}
+	void SetContent(string _content) {
+		p->SetContent(_content);
 	}
 };
 

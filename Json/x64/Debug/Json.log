@@ -1,8 +1,8 @@
 ﻿  main.cpp
 C:\Users\ipnnr\source\repos\Json\Json\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-C:\Users\ipnnr\source\repos\Json\Json\Json.h(48,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\ipnnr\source\repos\Json\Json\Json.h(54,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\Json\Json.h(49,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\ipnnr\source\repos\Json\Json\Json.h(55,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\ipnnr\source\repos\Json\Json\Json.h(65,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\Json\Json.h(56,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\ipnnr\source\repos\Json\Json\Json.h(66,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\Json\Json.h(67,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   Json.vcxproj -> C:\Users\ipnnr\source\repos\Json\x64\Debug\Json.exe
