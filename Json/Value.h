@@ -17,8 +17,15 @@ public:
 		data = nullptr;
 		depth= _depth;
 	};
-
+	~Value() {
+		delete data;
+		delete next;
+	};
+	string ToString() {
+		return ("[D:" + to_string(GetDepth()) + "] " + GetKey() + ':' + GetContent());
+	}
 	virtual string GetType() = 0;
+	int GetDepth() { return depth; }
 	string GetKey() { return key; };
 	virtual string GetContent() = 0;
 	
@@ -57,6 +64,7 @@ class ValueStr: public Value {
 	string content="";
 public:
 	using Value::Value;
+	//using Value::~Value;
 	void SetContent(string _str) override {content=_str;}
 	string GetType() override  {
 		return("string ");
@@ -70,7 +78,6 @@ class ValueInt : public Value {
 	int content;
 public:
 	using Value::Value;
-	//ValueInt(string _key, int _content) { key = _key; }
 	void SetContent(string s ) override { content = stoi(s); }
 	string GetType() override {
 		return("int ");
@@ -85,11 +92,12 @@ class ValueArr : public Value {
 public:
 	using Value::Value;
 	void SetContent(Value* _data) { setdata(_data); }
+	void SetContent(string s) override { return; }
 	string GetType() override {
 		return("array ");
 	}
 	string GetContent() override {
-		return " ";
+		return "";
 	};
 
 };

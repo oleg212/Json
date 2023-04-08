@@ -12,5 +12,15 @@ int main() {
 	Json j;
 	file >> j;
 	cout<< j;
+
+
+
+	cout << j.GetCur()->ToString() << endl;
+	j.GoRight();
+	cout << j.GetCur()->ToString() << endl;
+	j.GoNext();
+	cout << j.GetCur()->ToString() << endl;
+
+
 	return 0;
 }
