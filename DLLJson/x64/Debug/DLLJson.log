@@ -1,0 +1,9 @@
+﻿  DLLLinker.cpp
+D:\git_reps\Json\statLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+D:\git_reps\Json\statLibJson\Json.h(49,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(55,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(56,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(66,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(67,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  DLLLinker.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  DLLJson.vcxproj -> D:\git_reps\Json\x64\Debug\DLLJson.dll

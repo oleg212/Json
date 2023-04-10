@@ -1,0 +1,2 @@
+D:\git_reps\Json\Json.exe\x64\Debug\Json.exe.vcxproj.AssemblyReference.cache
+D:\git_reps\Json\Json.exe\x64\Debug\Json.exe.vcxproj.CopyComplete
