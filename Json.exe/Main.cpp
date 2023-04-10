@@ -21,6 +21,7 @@ int main() {
 	j.GoNext();
 	cout << j.GetCur()->ToString() << endl;
 
+	cout << j.GetCurRow();
 
 	return 0;
 }

@@ -4,6 +4,7 @@
 #include "Value.h"
 
 using namespace System;
+using namespace System::IO;
 
 namespace Json_net
 {
@@ -17,12 +18,13 @@ namespace Json_net
 		//	string _key = msclr::interop::marshal_as<std::string>(key);
 		//	value = new Value(_key, depth);
 		//}
-		~rfValue()
-		{
-			delete value;
-		}
+		//~rfValue()
+		//{
+		//	delete value;
+		//}
 
 		Value* GetCore() { return value; }
+		void SetCore(Value* core) { value = core; }
 
 		String^ GetType() { return gcnew String(value->GetType().c_str()); }
 		String^ GetContent() { return gcnew String(value->GetContent().c_str()); }
@@ -42,6 +44,12 @@ namespace Json_net
 		void setdata(rfValue^ _data) { value->setdata(_data->value->getdata()); }
 		Value* getnext() { return value->getnext(); }
 		Value* getdata() { return value->getdata(); }
+		ostream& operator<<(ostream& out)
+		{
+			out << value;
+			return out;
+		}
+
 	};
 
 	public ref class rfValueStr : public rfValue

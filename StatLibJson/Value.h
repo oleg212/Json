@@ -48,7 +48,7 @@ public:
 		if (v.GetContent() != "0")
 			out << v.GetContent() << "," << endl;
 		if (v.data != nullptr) {
-			out << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
+			out << v.tab(v.depth) << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
 		}
 
 		if (v.next != nullptr) {
@@ -58,6 +58,29 @@ public:
 		return out;
 
 	};
+
+	string GetLeafs()
+	{
+		string s = '"' + GetKey() + '"' + ": ";
+		if (GetContent() != "")
+			s += GetContent() + ",";
+		if (data != nullptr)
+		{
+			s += "\n{\n";
+			Value* tmp = data;
+			while (tmp != nullptr)
+			{
+				s += tab(1) + '"' + tmp->GetKey() + '"' + ": ";
+				if (tmp->GetContent() != "")
+					s += tmp->GetContent() + ",\n";
+				if (tmp->data != nullptr)
+					s += "{ }\n";
+				tmp = tmp->next;
+			}
+		}
+		s += "}";
+		return s;
+	}
 };
 
 class ValueStr : public Value {

@@ -74,7 +74,7 @@ class Json {
 	}
 public:
 	Pointer* p;
-	Json() { Root = nullptr; }
+	Json() { Root = nullptr; p = new Pointer(); }
 	~Json() {
 		delete Root;
 		delete p;
@@ -196,5 +196,10 @@ public:
 	}
 	void SetContent(string _content) {
 		p->SetContent(_content);
+	}
+
+	string GetCurRow()
+	{
+		return GetCur()->GetLeafs();
 	}
 };
