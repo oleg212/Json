@@ -13,10 +13,15 @@ using Json_net;
 
 namespace JsonVisual
 {
-
+    enum mode
+    {
+        add,
+        mod
+    };
     public partial class Form1 : Form
     {
         rfJson JSONobj = new rfJson();
+        mode param;
         public Form1()
         {
             InitializeComponent();
@@ -99,6 +104,38 @@ namespace JsonVisual
             }
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            param = mode.add;
+            comboBox1.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+            button3.Visible = true;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            param = mode.mod;
+            comboBox1.Visible = false;
+            label1.Visible = false;
+            label2.Visible = true;
+            textBox2.Visible = false;
+            textBox3.Visible = true;
+            button3.Visible = true;
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            comboBox1.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            button3.Visible = false;
+        }
+
         private void paint()
         {
             if (radioButton1.Checked)
@@ -143,5 +180,7 @@ namespace JsonVisual
 
             textBox1.Refresh();
         }
+
+
     }
 }
