@@ -36,6 +36,20 @@ public:
 	void SetContent(string _content) {
 		cur->SetContent(_content);
 	}
+	void delcur() {
+		Value* tmp = cur;
+		cur = path.top();
+		path.pop();
+		if (tmp->getnext() != nullptr)
+		{
+			if (cur->getdata() == tmp)
+				cur->setdata(tmp->getnext());
+			if (cur->getnext() == tmp)
+				cur->setnext(tmp->getnext());
+			tmp->setnext(nullptr);
+		}
+		delete tmp;
+	}
 	bool isempty() { return path.empty(); }
 	string show() {
 		return cur->GetKey() + ":" + cur->GetContent() + '\n';
@@ -196,6 +210,9 @@ public:
 	}
 	void SetContent(string _content) {
 		p->SetContent(_content);
+	}
+	void delcur() {
+		p->delcur();
 	}
 
 	string GetCurRow()
