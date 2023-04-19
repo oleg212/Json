@@ -12,3 +12,17 @@ D:\git_reps\Json\JsonVisual\obj\Debug\JsonVisual.csproj.CopyComplete
 D:\git_reps\Json\JsonVisual\obj\Debug\JsonVisual.exe
 D:\git_reps\Json\JsonVisual\obj\Debug\JsonVisual.pdb
 D:\git_reps\Json\JsonVisual\obj\Debug\JsonVisual.Form1.resources
+C:\Users\ipnnr\source\repos\Json\JsonVisual\bin\Debug\JsonVisual.exe.config
+C:\Users\ipnnr\source\repos\Json\JsonVisual\bin\Debug\JsonVisual.exe
+C:\Users\ipnnr\source\repos\Json\JsonVisual\bin\Debug\JsonVisual.pdb
+C:\Users\ipnnr\source\repos\Json\JsonVisual\bin\Debug\DLLJson.dll
+C:\Users\ipnnr\source\repos\Json\JsonVisual\bin\Debug\DLLJson.pdb
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.csproj.AssemblyReference.cache
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.csproj.SuggestedBindingRedirects.cache
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.Form1.resources
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.Properties.Resources.resources
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.csproj.GenerateResource.cache
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.csproj.CoreCompileInputs.cache
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.csproj.CopyComplete
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.exe
+C:\Users\ipnnr\source\repos\Json\JsonVisual\obj\Debug\JsonVisual.pdb
