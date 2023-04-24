@@ -1,8 +1,10 @@
 ﻿  StatLibLinker.cpp
-D:\git_reps\Json\StatLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-D:\git_reps\Json\StatLibJson\Json.h(49,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(55,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(56,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(66,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(67,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  StatLibJson.vcxproj -> D:\git_reps\Json\x64\Debug\StatLibJson.lib
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Value.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(50,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(56,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(57,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(67,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(68,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(172,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(173,7): warning C4101: 'type': unreferenced local variable
+  StatLibJson.vcxproj -> C:\Users\ipnnr\source\repos\Json\x64\Debug\StatLibJson.lib
