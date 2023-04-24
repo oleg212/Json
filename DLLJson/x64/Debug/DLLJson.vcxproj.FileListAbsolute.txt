@@ -1,2 +1,0 @@
-D:\git_reps\Json\DLLJson\x64\Debug\DLLJson.vcxproj.AssemblyReference.cache
-C:\Users\ipnnr\source\repos\Json\DLLJson\x64\Debug\DLLJson.vcxproj.AssemblyReference.cache
