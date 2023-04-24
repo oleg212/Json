@@ -9,6 +9,7 @@ class Pointer {
 public:
 	Pointer() { cur = nullptr; }
 	Pointer(Value* root) { cur = root; }
+	void init(Value* root) { cur = root; }
 	Value* GetCur() { return cur; }
 	void GoNext() { path.push(cur); cur = cur->getnext(); }
 	void GoRight() { path.push(cur); cur = cur->getdata(); }
@@ -37,7 +38,15 @@ public:
 		cur->SetContent(_content);
 	}
 	void delcur() {
-		Value* tmp = cur;
+		if (cur == nullptr) return;
+		if (path.empty())
+		{
+			Value* tmp = cur;
+			cur = nullptr;
+			delete tmp;
+			return;
+		}
+		Value* tmp = cur; 
 		cur = path.top();
 		path.pop();
 		if (tmp->getnext() != nullptr)
@@ -94,7 +103,9 @@ public:
 		delete p;
 	}
 	friend ostream& operator <<(ostream& out, Json& v) {
-		out << "\n{" << endl << *v.Root << "}\n" << endl;
+		if (v.GetCur() != nullptr)
+			out << "\n{" << endl << *v.Root << "}\n" << endl;
+		else out << "empty" << endl;
 		return out;
 	}
 	friend istream& operator>>(istream& istr, Json& json)
@@ -179,7 +190,7 @@ public:
 
 		return istr;
 	}
-	Value* GetCur() { return p->GetCur(); }
+	Value* GetCur() {  return p->GetCur(); }
 	void GoNext() {
 		if (GetCur()->getnext() != nullptr)p->GoNext();
 		else throw - 1;
@@ -200,10 +211,47 @@ public:
 		else throw - 1;
 	}
 	void AddNext(Value* _next) {
+		if (GetCur() == nullptr)
+		{
+			Root = _next;
+			p->init(Root);
+			return;
+		}
 		p->AddNext(_next);
 	}
 	void AddRight(Value* _right) {
+		if (GetCur() == nullptr)
+		{
+			Root = _right;
+			p->init(Root);
+			return;
+		}
 		p->AddRight(_right);
+	}
+	void AddRight(string key, int mode, string content) {
+		switch (mode)
+		{
+		case 0:
+		{
+			ValueStr* _right = new ValueStr(key, GetCur()->GetDepth() + 1);
+			_right->SetContent(content);
+			p->AddRight(_right);
+			break;
+		}
+		case 1:
+		{
+			ValueInt* _right = new ValueInt(key, GetCur()->GetDepth() + 1);
+			_right->SetContent(content);
+			p->AddRight(_right);
+			break;
+		}
+		case 2:
+		{
+			ValueArr* _right = new ValueArr(key, GetCur()->GetDepth() + 1);
+			p->AddRight(_right);
+			break;
+		}
+		}
 	}
 	void SetContent(int _content) {
 		p->SetContent(_content);
@@ -217,6 +265,7 @@ public:
 
 	string GetCurRow()
 	{
+		if (GetCur() == nullptr) return "empty";
 		return GetCur()->GetLeafs();
 	}
 };

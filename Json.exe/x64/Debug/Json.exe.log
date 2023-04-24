@@ -1,8 +1,9 @@
 ﻿  Main.cpp
 D:\git_reps\Json\statLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-D:\git_reps\Json\statLibJson\Json.h(63,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\statLibJson\Json.h(69,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\statLibJson\Json.h(70,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\statLibJson\Json.h(80,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\statLibJson\Json.h(81,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(71,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(77,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(78,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(88,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\statLibJson\Json.h(89,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Main.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   Json.exe.vcxproj -> D:\git_reps\Json\x64\Debug\Json.exe.exe

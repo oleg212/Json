@@ -22,22 +22,35 @@ Class Json_net.rfValue: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     op_LeftShift(basic_ostream<char\,std::char_traits<char> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig, SpecialName
 Class Json_net.rfValueStr: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :Json_net.rfValue
+    Void .ctor(System.String, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SetContent(String): PrivateScope, Public, HideBySig
 Class Json_net.rfValueInt: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :Json_net.rfValue
+    Void .ctor(System.String, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SetContent(String): PrivateScope, Public, HideBySig
 Class Json_net.rfValueArr: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :Json_net.rfValue
+    Void .ctor(System.String, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SetContent(rfValue): PrivateScope, Public, HideBySig
 Class Json_net.rfJson: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
     System.IDisposable
   Methods:
     GetCur(): PrivateScope, Public, HideBySig
+    empty(): PrivateScope, Public, HideBySig
     GoNext(): PrivateScope, Public, HideBySig
     GoRight(): PrivateScope, Public, HideBySig
     GoBack(): PrivateScope, Public, HideBySig
     GoUp(): PrivateScope, Public, HideBySig
     Addnext(rfValue): PrivateScope, Public, HideBySig
     AddRight(rfValue): PrivateScope, Public, HideBySig
+    Add_Right(String, Int32, String): PrivateScope, Public, HideBySig
+    AddLeft(rfValue): PrivateScope, Public, HideBySig
+    delcur(): PrivateScope, Public, HideBySig
     SetContent(String): PrivateScope, Public, HideBySig
     SetContent(Int32): PrivateScope, Public, HideBySig
     op_LeftShift(basic_ostream<char\,std::char_traits<char> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig, SpecialName

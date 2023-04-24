@@ -19,12 +19,21 @@ namespace Json_net
 				t->SetCore(js->GetCur());
 				return t;
 		}
+		bool empty() { return js->GetCur() == nullptr; }
 		void GoNext() { js->GoNext(); }
 		void GoRight() { js->GoRight(); }
 		void GoBack() { js->GoBack(); }
 		void GoUp() { js->GoUp(); }
 		void Addnext(rfValue^ next) { js->AddNext(next->GetCore()); }
 		void AddRight(rfValue^ right) { js->AddRight(right->GetCore()); }
+		void Add_Right(String^ key, int mode, String^ content)
+		{
+			string _key = msclr::interop::marshal_as<std::string>(key);
+			string _content = msclr::interop::marshal_as<std::string>(content);
+			js->AddRight(_key, mode, _content);
+		}
+		void AddLeft(rfValue^ right) { js->AddRight(right->GetCore()); }
+		void delcur() { js->delcur(); }
 		void SetContent(int content) { js->SetContent(content); }
 		void SetContent(String^ content) 
 		{ 

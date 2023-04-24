@@ -132,6 +132,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(683, 355);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(35, 17);
@@ -161,15 +162,17 @@
             this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Key";
+            this.label1.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(389, 453);
+            this.label2.Location = new System.Drawing.Point(380, 453);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 16;
             this.label2.Text = "Content";
+            this.label2.Visible = false;
             // 
             // textBox2
             // 
@@ -177,6 +180,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(247, 20);
             this.textBox2.TabIndex = 17;
+            this.textBox2.Visible = false;
             // 
             // textBox3
             // 
@@ -184,6 +188,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(247, 20);
             this.textBox3.TabIndex = 18;
+            this.textBox3.Visible = false;
             // 
             // button1
             // 
@@ -213,6 +218,7 @@
             this.button3.TabIndex = 21;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button4
             // 
@@ -222,10 +228,12 @@
             this.button4.TabIndex = 22;
             this.button4.Text = "Admin Ch";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Str",
@@ -235,6 +243,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 23;
+            this.comboBox1.Visible = false;
             // 
             // Form1
             // 

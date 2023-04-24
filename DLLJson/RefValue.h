@@ -54,6 +54,7 @@ namespace Json_net
 
 	public ref class rfValueStr : public rfValue
 	{
+	public:
 		rfValueStr(String^ key, int depth)
 		{
 			string _key = msclr::interop::marshal_as<std::string>(key);
@@ -68,10 +69,11 @@ namespace Json_net
 
 	public ref class rfValueInt : public rfValue
 	{
+	public :
 		rfValueInt(String^ key, int depth)
 		{
 			string _key = msclr::interop::marshal_as<std::string>(key);
-			value = new ValueStr(_key, depth);
+			value = new ValueInt(_key, depth);
 		}
 		void SetContent(String^ s)
 		{
@@ -82,10 +84,11 @@ namespace Json_net
 
 	public ref class rfValueArr : public rfValue
 	{
+	public:
 		rfValueArr(String^ key, int depth)
 		{
 			string _key = msclr::interop::marshal_as<std::string>(key);
-			value = new ValueStr(_key, depth);
+			value = new ValueArr(_key, depth);
 		}
 		void SetContent(rfValue^ _data)
 		{

@@ -1,8 +1,8 @@
 ﻿  StatLibLinker.cpp
 D:\git_reps\Json\StatLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-D:\git_reps\Json\StatLibJson\Json.h(63,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(69,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(70,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(80,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(81,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\StatLibJson\Json.h(72,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\StatLibJson\Json.h(78,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\StatLibJson\Json.h(79,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\StatLibJson\Json.h(89,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\git_reps\Json\StatLibJson\Json.h(90,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   StatLibJson.vcxproj -> D:\git_reps\Json\x64\Debug\StatLibJson.lib

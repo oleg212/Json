@@ -31,8 +31,8 @@ public:
 
 	virtual void SetContent(string s) = 0;
 
-	void setnext(Value* _next) { _next->next = next; next = _next; }
-	void setdata(Value* _data) { _data->next = data; data = _data; }
+	void setnext(Value* _next) { /*if (_next != nullptr) _next->next = next; */next = _next; }
+	void setdata(Value* _data) { /*if (_data != nullptr) _data->next = data; */data = _data; }
 	Value* getnext() { return next; }
 	Value* getdata() { return data; }
 	string tab(int d) {
