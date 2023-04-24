@@ -97,6 +97,7 @@
             this.GoNext.TabIndex = 2;
             this.GoNext.Text = "GoNext";
             this.GoNext.UseVisualStyleBackColor = true;
+            this.GoNext.Visible = false;
             this.GoNext.Click += new System.EventHandler(this.button1_Click);
             // 
             // GoRight
@@ -107,6 +108,7 @@
             this.GoRight.TabIndex = 3;
             this.GoRight.Text = "GoRight";
             this.GoRight.UseVisualStyleBackColor = true;
+            this.GoRight.Visible = false;
             this.GoRight.Click += new System.EventHandler(this.button2_Click);
             // 
             // GoBack
@@ -117,6 +119,7 @@
             this.GoBack.TabIndex = 4;
             this.GoBack.Text = "GoBack";
             this.GoBack.UseVisualStyleBackColor = true;
+            this.GoBack.Visible = false;
             this.GoBack.Click += new System.EventHandler(this.button3_Click);
             // 
             // GoUp
@@ -127,6 +130,7 @@
             this.GoUp.TabIndex = 5;
             this.GoUp.Text = "GoUp";
             this.GoUp.UseVisualStyleBackColor = true;
+            this.GoUp.Visible = false;
             this.GoUp.Click += new System.EventHandler(this.button4_Click);
             // 
             // radioButton1

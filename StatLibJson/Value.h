@@ -21,7 +21,23 @@ public:
 		delete data;
 		delete next;
 	};
-	string ToString() {
+	string ToString() 
+	{
+		string s = ( tab(GetDepth()) + '"' + GetKey() + '"' + ':');
+		if (GetContent() != "")
+		{
+			s += GetContent();
+			if (next != nullptr) s += ",";
+			s += "\n";
+		}
+		if (data != nullptr) {
+			s += tab(GetDepth()) + "{\n";
+		}
+		//if (next == nullptr)
+		//	s += "}\n";
+		return s;
+	}
+	string To_String() {
 		return ("[D:" + to_string(GetDepth()) + "] " + GetKey() + ':' + GetContent());
 	}
 	virtual string GetType() = 0;
@@ -43,12 +59,14 @@ public:
 		return res;
 	}
 	friend ostream& operator <<(ostream& out, Value& v) {
-
 		out << v.tab(v.depth) << '"' << v.GetKey() << '"' << ": ";
-		if (v.GetContent() != "")
-			out << v.GetContent() << "," << endl;
+		if (v.GetContent() != "") {
+			out << v.GetContent();
+			if (v.next != nullptr)out << ",";
+			out << endl;
+		}
 		if (v.data != nullptr) {
-			out << '\n' << v.tab(v.depth) << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
+			out << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
 		}
 
 		if (v.next != nullptr) {
@@ -78,7 +96,7 @@ public:
 				tmp = tmp->next;
 			}
 		}
-		s += "}";
+		s += "}\n";
 		return s;
 	}
 };

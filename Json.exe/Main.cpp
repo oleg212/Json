@@ -20,13 +20,20 @@ int main() {
 	cout << j.GetCur()->ToString() << endl;
 	j.GoNext();
 	cout << j.GetCur()->ToString() << endl;
+	j.GoNext();
 
 	cout << j.GetCurRow();
 
-	j.delcur();
 
-	cout << j.GetCur()->ToString() << endl;
-	cout << j.GetCurRow();
+	//j.delcur();
+	//try{
+	//j.GoRight();
+	//}
+	//catch (int a)
+	//{
+	//	cout << "catch" << endl;
+	//	}
+	//cout << j;
 
 	return 0;
 }

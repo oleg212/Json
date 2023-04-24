@@ -23,6 +23,14 @@ namespace Json_net
 		//	delete value;
 		//}
 
+		String^ tab(int d) {
+			string res;
+			for (int i = 0; i < d; i++) {
+				res += "   ";
+			}
+			return gcnew String(res.c_str());
+		}
+
 		Value* GetCore() { return value; }
 		void SetCore(Value* core) { value = core; }
 

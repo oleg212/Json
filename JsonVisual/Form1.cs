@@ -45,63 +45,51 @@ namespace JsonVisual
                 textBox1.Refresh();
                 /*                label1.Text = s;
                                 label1.Refresh();*/
+                GoRight.Visible = true;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try 
-            {
-                JSONobj.GoNext();
-                paint();
-            }
-            catch(Exception a)
-            {
-                textBox1.Text += Environment.NewLine + "error: can not go next";
-                textBox1.Refresh();
-            }
+            JSONobj.GoNext();
+            paint();
+            if (!JSONobj.HasNext()) GoNext.Visible = false;
+            if (!JSONobj.HasRight()) GoRight.Visible = false;
+            GoBack.Visible = true;
+            GoUp.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
                 JSONobj.GoRight();
                 paint();
-            }
-            catch(Exception a)
-            { 
-                textBox1.Text += Environment.NewLine + "error: can not go right";
-                textBox1.Refresh();
-            }
+            if (!JSONobj.HasNext()) GoNext.Visible = false;
+            if (!JSONobj.HasRight()) GoRight.Visible = false;
+            GoBack.Visible = true;
+            GoUp.Visible = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
                 JSONobj.GoBack();
                 paint();
-            }
-            catch (Exception a)
-            {
-                textBox1.Text += Environment.NewLine + "error: can not go back";
-                textBox1.Refresh();
-            }
+            GoNext.Visible = true;
+            GoRight.Visible = true;
+            if (!JSONobj.HasNext()) GoNext.Visible = false;
+            if (!JSONobj.HasRight()) GoRight.Visible = false;
+            if (!JSONobj.HasBack()) GoBack.Visible = false;
+            if (!JSONobj.HasUp()) GoUp.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
-            {
                 JSONobj.GoUp();
                 paint();
-            }
-            catch (Exception a)
-            {
-                textBox1.Text += Environment.NewLine + "error: can not go up";
-                textBox1.Refresh();
-            }
+            GoNext.Visible = true;
+            GoRight.Visible = true;
+            if (!JSONobj.HasNext()) GoNext.Visible = false;
+            if (!JSONobj.HasBack()) GoBack.Visible = false;
+            if (!JSONobj.HasUp()) GoUp.Visible = false;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -195,7 +183,7 @@ namespace JsonVisual
             }
         }
 
-            private void paint()
+            private void paint1()
         {
             if (radioButton1.Checked)
             {
@@ -215,6 +203,38 @@ namespace JsonVisual
 
             }
             textBox1.Refresh();
+            GoNext.Visible = true;
+            GoRight.Visible = true;
+            GoBack.Visible = true;  
+            GoUp.Visible = true;    
+        }
+
+        private void paint()
+        {
+            rfPointer point = new rfPointer();
+            point.SetPointer(JSONobj);
+            string s = "{\n";
+            s += point.GetCur().To_String();
+            point.GoRight();
+            while (point.HasUp())
+            {
+                    while (point.HasRight())
+                    {
+                        s += point.GetCur().To_String();
+                        point.GoRight();
+                    }
+                    s += point.GetCur().To_String();
+                    while (point.HasUp() && !point.HasNext())
+                    {
+                    point.GoUp();
+                    s += point.GetCur().tab(point.GetCur().GetDepth()) + "}\n";
+                    }
+                    if (point.HasNext())
+                        point.GoNext();
+            }
+            s += "}";
+            s = s.Replace("\n", Environment.NewLine);
+            textBox1.Text = s;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
