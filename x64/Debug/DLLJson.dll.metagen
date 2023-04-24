@@ -21,6 +21,7 @@ Class Json_net.rfValue: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getnext(): PrivateScope, Public, HideBySig
     getdata(): PrivateScope, Public, HideBySig
     op_LeftShift(basic_ostream<char\,std::char_traits<char> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig, SpecialName
+    equals(rfValue): PrivateScope, Public, HideBySig
 Class Json_net.rfValueStr: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :Json_net.rfValue
     Void .ctor(System.String, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

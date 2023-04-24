@@ -101,7 +101,10 @@ namespace Json_net
 			out << value;
 			return out;
 		}
-
+		bool equals(rfValue^ v)
+		{
+			return GetCore() == v->GetCore();
+		}
 	};
 
 	public ref class rfValueStr : public rfValue

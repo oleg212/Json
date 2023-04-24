@@ -183,14 +183,11 @@ namespace JsonVisual
             }
         }
 
-            private void paint1()
+            private void paint()
         {
             if (radioButton1.Checked)
             {
-                string s = JSONobj.WriteAsString();
-                s = s.Replace("\n", Environment.NewLine);
-
-                textBox1.Text = s;
+                markout();
 
             }
             if (radioButton2.Checked)
@@ -209,20 +206,27 @@ namespace JsonVisual
             GoUp.Visible = true;    
         }
 
-        private void paint()
+        private void markout()
         {
             rfPointer point = new rfPointer();
             point.SetPointer(JSONobj);
             string s = "{\n";
+            if (JSONobj.GetCur().equals(point.GetCur()))
+                s += ">>";
             s += point.GetCur().To_String();
             point.GoRight();
+            textBox1.ForeColor = Color.Red;
             while (point.HasUp())
             {
                     while (point.HasRight())
                     {
-                        s += point.GetCur().To_String();
+                    if (JSONobj.GetCur().equals(point.GetCur()))
+                        s += ">>";
+                    s += point.GetCur().To_String();
                         point.GoRight();
                     }
+                    if (JSONobj.GetCur().equals(point.GetCur()))
+                        s += ">>";
                     s += point.GetCur().To_String();
                     while (point.HasUp() && !point.HasNext())
                     {
@@ -235,6 +239,7 @@ namespace JsonVisual
             s += "}";
             s = s.Replace("\n", Environment.NewLine);
             textBox1.Text = s;
+            textBox1.Refresh();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
