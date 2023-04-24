@@ -44,6 +44,50 @@ namespace Json_net
 		void setdata(rfValue^ _data) { value->setdata(_data->value->getdata()); }
 		Value* getnext() { return value->getnext(); }
 		Value* getdata() { return value->getdata(); }
+		//rfValue^ getnext() 
+		//{ 
+		//	String^ key = gcnew String(value->getnext()->GetKey().c_str());
+		//	if (value->getnext()->GetType() == "string ")
+		//	{
+		//		rfValueStr^ t = gcnew rfValueStr(key, value->GetDepth());
+		//		t->SetCore(value->getnext());
+		//		return t;
+		//	}
+		//	else 			if (value->getnext()->GetType() == "int ")
+		//	{
+		//		rfValueInt^ t = gcnew rfValueInt(key, value->GetDepth());
+		//		t->SetCore(value->getnext());
+		//		return t;
+		//	}
+		//	else 			if (value->getnext()->GetType() == "array ")
+		//	{
+		//		rfValueArr^ t = gcnew rfValueArr(key, value->GetDepth());
+		//		t->SetCore(value->getnext());
+		//		return t;
+		//	}
+		//}
+		//rfValue^ getdata()
+		//{
+		//	String^ key = gcnew String(value->getdata()->GetKey().c_str());
+		//	if (value->getdata()->GetType() == "string ")
+		//	{
+		//		rfValueStr^ t = gcnew rfValueStr(key, value->GetDepth());
+		//		t->SetCore(value->getdata());
+		//		return t;
+		//	}
+		//	else 			if (value->getdata()->GetType() == "int ")
+		//	{
+		//		rfValueInt^ t = gcnew rfValueInt(key, value->GetDepth());
+		//		t->SetCore(value->getdata());
+		//		return t;
+		//	}
+		//	else 			if (value->getdata()->GetType() == "array ")
+		//	{
+		//		rfValueArr^ t = gcnew rfValueArr(key, value->GetDepth());
+		//		t->SetCore(value->getdata());
+		//		return t;
+		//	}
+		//}
 		ostream& operator<<(ostream& out)
 		{
 			out << value;

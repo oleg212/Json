@@ -45,10 +45,10 @@ public:
 	friend ostream& operator <<(ostream& out, Value& v) {
 
 		out << v.tab(v.depth) << '"' << v.GetKey() << '"' << ": ";
-		if (v.GetContent() != "0")
+		if (v.GetContent() != "")
 			out << v.GetContent() << "," << endl;
 		if (v.data != nullptr) {
-			out << v.tab(v.depth) << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
+			out << '\n' << v.tab(v.depth) << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
 		}
 
 		if (v.next != nullptr) {

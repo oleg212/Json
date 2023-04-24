@@ -15,13 +15,13 @@ int main() {
 	file >> j;
 	cout << j;
 
-	//cout << j.GetCur()->ToString() << endl;
-	//j.GoRight();
-	//cout << j.GetCur()->ToString() << endl;
-	//j.GoNext();
-	//cout << j.GetCur()->ToString() << endl;
+	cout << j.GetCur()->ToString() << endl;
+	j.GoRight();
+	cout << j.GetCur()->ToString() << endl;
+	j.GoNext();
+	cout << j.GetCur()->ToString() << endl;
 
-	//cout << j.GetCurRow();
+	cout << j.GetCurRow();
 
 	j.delcur();
 

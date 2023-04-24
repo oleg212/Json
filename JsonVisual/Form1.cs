@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Json_net;
 
+
 namespace JsonVisual
 {
     enum mode
@@ -199,7 +200,6 @@ namespace JsonVisual
             if (radioButton1.Checked)
             {
                 string s = JSONobj.WriteAsString();
-
                 s = s.Replace("\n", Environment.NewLine);
 
                 textBox1.Text = s;
