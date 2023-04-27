@@ -1,10 +1,10 @@
 ﻿  StatLibLinker.cpp
-D:\git_reps\Json\StatLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-D:\git_reps\Json\StatLibJson\Json.h(77,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(83,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(84,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(94,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(95,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(126,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\git_reps\Json\StatLibJson\Json.h(127,7): warning C4101: type: неиспользованная локальная переменная
-  StatLibJson.vcxproj -> D:\git_reps\Json\x64\Debug\StatLibJson.lib
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Value.h(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(83,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(89,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(90,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(100,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(101,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(208,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(209,7): warning C4101: type: неиспользованная локальная переменная
+  StatLibJson.vcxproj -> C:\Users\ipnnr\source\repos\Json\x64\Debug\StatLibJson.lib

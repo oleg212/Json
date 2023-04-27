@@ -29,12 +29,17 @@ public:
 		}
 	}
 	void AddNext(Value* _next) {
-		if (cur == nullptr) { cur = _next; return; }
+		if (cur == nullptr) {
+			cur = _next; return; 
+		}
+		_next->setnext(cur->getnext());
 		cur->setnext(_next);
 		GoNext();
 	}
 	void AddRight(Value* _right) {
+		_right->setnext(cur->getdata());
 		cur->setdata(_right);
+
 		GoRight();
 	}
 	void SetContent(int _content) {
@@ -234,8 +239,7 @@ public:
 					if (rb) { json.p->AddRight(newvalue);rb = 0; }
 					else { json.p->AddNext(newvalue); 
 					if (first) json.Root = newvalue;
-					}
-					
+					}					
 				}
 				if (file[i] == '}') {
 					json.p->GoUp();
@@ -245,10 +249,7 @@ public:
 				first = 0;
 			}
 			i++;
-
 		}
-
-
 		return istr;
 	}
 	Value* process(string s, int depth) {
