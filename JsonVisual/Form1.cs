@@ -16,13 +16,16 @@ namespace JsonVisual
 {
     enum mode
     {
-        add,
+        addright,
+        addnext,
         mod
     };
     public partial class Form1 : Form
     {
         rfJson JSONobj = new rfJson();
+        ButtonObserver obs = new ButtonObserver();
         mode param;
+        int i = 1;
         public Form1()
         {
             InitializeComponent();
@@ -30,22 +33,16 @@ namespace JsonVisual
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-/*            OpenFileDialog dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)*/
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                /*                string str = dialog.FileName;*/
-                string str = "C:\\Users\\ipnnr\\source\\repos\\Json\\Json\\test.json";
+                string str = dialog.FileName;
+/*                string str = "C:\\Users\\ipnnr\\source\\repos\\Json\\Json\\test.json";*/
                 JSONobj.ReadFromFile(str);
-                string s = JSONobj.WriteAsString();
-
-                s = s.Replace("\n", Environment.NewLine);
-
-                textBox1.Text = s;
-
-                textBox1.Refresh();
+                paint();
                 /*                label1.Text = s;
                                 label1.Refresh();*/
-                GoRight.Visible = true;
+                obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
             }
         }
 
@@ -53,55 +50,45 @@ namespace JsonVisual
         {
             JSONobj.GoNext();
             paint();
-            if (!JSONobj.HasNext()) GoNext.Visible = false;
-            if (!JSONobj.HasRight()) GoRight.Visible = false;
-            GoBack.Visible = true;
-            GoUp.Visible = true;
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
                 JSONobj.GoRight();
                 paint();
-            if (!JSONobj.HasNext()) GoNext.Visible = false;
-            if (!JSONobj.HasRight()) GoRight.Visible = false;
-            GoBack.Visible = true;
-            GoUp.Visible = true;
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
                 JSONobj.GoBack();
                 paint();
-            GoNext.Visible = true;
-            GoRight.Visible = true;
-            if (!JSONobj.HasNext()) GoNext.Visible = false;
-            if (!JSONobj.HasRight()) GoRight.Visible = false;
-            if (!JSONobj.HasBack()) GoBack.Visible = false;
-            if (!JSONobj.HasUp()) GoUp.Visible = false;
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
                 JSONobj.GoUp();
                 paint();
-            GoNext.Visible = true;
-            GoRight.Visible = true;
-            if (!JSONobj.HasNext()) GoNext.Visible = false;
-            if (!JSONobj.HasBack()) GoBack.Visible = false;
-            if (!JSONobj.HasUp()) GoUp.Visible = false;
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            param = mode.add;
+            param = mode.addright;
             comboBox1.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
-            textBox2.Visible = true;
-            textBox3.Visible = true;
-            textBox2.Clear();
-            textBox3.Clear();
+            button4.Visible = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            param = mode.addnext;
+            comboBox1.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
             button4.Visible = true;
         }
 
@@ -121,7 +108,10 @@ namespace JsonVisual
         {
             JSONobj.delcur();
             paint();
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
+
+
 
         private void button4_Click_1(object sender, EventArgs e)
         {
@@ -133,13 +123,16 @@ namespace JsonVisual
             textBox2.Visible = false;
             textBox3.Visible = false;
             button4.Visible = false;
+            obs.SetButtons(JSONobj, GoNext, GoRight, GoBack, GoUp, button1, button5);
         }
+
+
 
         private void change()
         {
             switch (param)
             {
-                case mode.add:
+                case mode.addright:
                     {
                         String key = textBox2.Text;
                         String content = textBox3.Text;
@@ -153,14 +146,14 @@ namespace JsonVisual
                             case 0:
                                 {
                                     rfValueStr s = new rfValueStr(key, depth);
-                                    s.SetContent(content);
+                                    s.SetContent(" \"" + content + '"');
                                     JSONobj.AddRight(s);
                                     break;
                                 }
                             case 1:
                                 {
                                     rfValueInt s = new rfValueInt(key, depth);
-                                    s.SetContent(content);
+                                    s.SetContent(' ' + content);
                                     JSONobj.AddRight(s);
                                     break;
                                 }
@@ -174,10 +167,48 @@ namespace JsonVisual
 
                         break;
                     }
+                case mode.addnext:
+                    {
+                        String key = textBox2.Text;
+                        String content = textBox3.Text;
+                        int depth = 1;
+                        if (!JSONobj.empty())
+                        {
+                            depth = JSONobj.GetCur().GetDepth();
+                        }
+                        switch (comboBox1.SelectedIndex)
+                        {
+                            case 0:
+                                {
+                                    rfValueStr s = new rfValueStr(key, depth);
+                                    s.SetContent(" \"" + content + '"');
+                                    JSONobj.AddNext(s);
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    rfValueInt s = new rfValueInt(key, depth);
+                                    s.SetContent(' ' + content);
+                                    JSONobj.AddNext(s);
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    rfValueArr s = new rfValueArr(key, depth);
+                                    JSONobj.AddNext(s);
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
                 case mode.mod:
                     {
                         String content = textBox3.Text;
-                        JSONobj.SetContent(content);
+                        if (JSONobj.GetCur().GetType() == "string ")
+                            JSONobj.SetContent(" \"" + content + '"');
+                        else
+                            JSONobj.SetContent(" " + content);
                         break;
                     }
             }
@@ -200,10 +231,6 @@ namespace JsonVisual
 
             }
             textBox1.Refresh();
-            GoNext.Visible = true;
-            GoRight.Visible = true;
-            GoBack.Visible = true;  
-            GoUp.Visible = true;    
         }
 
         private void markout()
@@ -262,6 +289,32 @@ namespace JsonVisual
             textBox1.Text = s;
 
             textBox1.Refresh();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox2.Visible = true;
+            textBox2.Clear();
+            if (comboBox1.SelectedIndex != 2) { textBox3.Visible = true; textBox3.Clear(); }
+
+        }
+    }
+
+    public class ButtonObserver
+    {
+        public void SetButtons(rfJson val, Button gn, Button gr, Button gb, Button gu, Button ar, Button an)
+        {
+            if (val.GetCur().GetType() == "array ")
+                ar.Visible = true;
+            else ar.Visible = false;
+            if (val.HasNext()) gn.Visible = true;
+            else gn.Visible = false;
+            if (val.HasRight()) gr.Visible = true;
+            else gr.Visible = false;
+            if (val.HasBack()) { gb.Visible = true; an.Visible = true; }
+            else { gb.Visible = false; an.Visible = false;}  
+            if (val.HasUp()) gu.Visible = true;
+            else gu.Visible = false;
         }
     }
 }

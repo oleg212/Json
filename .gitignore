@@ -1,6 +1,7 @@
-.vs/
+**.vs
 **/Debug
 **/bin
+**/x64
 /x64/Debug/DLLJson.dll.metagen
 /x64/Debug/Json.exe
 /x64/Debug/Json.exe.exe.metagen

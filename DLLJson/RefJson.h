@@ -30,7 +30,7 @@ namespace Json_net
 		void GoRight() { js->GoRight(); }
 		void GoBack() { js->GoBack(); }
 		void GoUp() { js->GoUp(); }
-		void Addnext(rfValue^ next) { js->AddNext(next->GetCore()); }
+		void AddNext(rfValue^ next) { js->AddNext(next->GetCore()); }
 		void AddRight(rfValue^ right) { js->AddRight(right->GetCore()); }
 		//void Add_Right(String^ key, int mode, String^ content)
 		//{

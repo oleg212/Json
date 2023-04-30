@@ -30,8 +30,9 @@ public:
 			if (next != nullptr) s += ",";
 			s += "\n";
 		}
-		if (data != nullptr) {
-			s += tab(GetDepth()) + "{\n";
+		if (GetType() == "array ") {
+			s += "\t{\n";
+			if (getdata() == nullptr) s += "\t}\n";
 		}
 		//if (next == nullptr)
 		//	s += "}\n";
@@ -60,7 +61,7 @@ public:
 	}
 	friend ostream& operator <<(ostream& out, Value& v) {
 		out << v.tab(v.depth) << '"' << v.GetKey() << '"' << ": ";
-		if (v.GetContent() != "0")
+		if (v.GetContent() != "")
 			out << v.GetContent();
 		if (v.data != nullptr) {
 			out << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';

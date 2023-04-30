@@ -250,10 +250,13 @@ public:
 			}
 			i++;
 		}
+		json.p->init(json.Root);
+
 		return istr;
 	}
 	Value* process(string s, int depth) {
 		string name = get_key(s);
+		s = s.erase(s.find('"'), name.length() + 2);
 		if (s.find('{') != -1) {
 			Value* res = new ValueArr(name, depth);
 			return res;
