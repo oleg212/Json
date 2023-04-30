@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;DLLJSON_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\ipnnr\source\repos\Json\StatLibJson</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git_reps\Json\StatLibJson</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:twoPhase-	
  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -126,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;DLLJSON_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\git_reps\Json\statLibJson</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git_reps\Json\StatLibJson</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:twoPhase-	
  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
