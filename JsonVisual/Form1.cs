@@ -34,7 +34,7 @@ namespace JsonVisual
             if (dialog.ShowDialog() == DialogResult.OK)*/
             {
                 /*                string str = dialog.FileName;*/
-                string str = "D:\\git_reps\\Json\\Json.exe\\test.json";
+                string str = "C:\\Users\\ipnnr\\source\\repos\\Json\\Json\\test.json";
                 JSONobj.ReadFromFile(str);
                 string s = JSONobj.WriteAsString();
 

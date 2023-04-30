@@ -60,21 +60,17 @@ public:
 	}
 	friend ostream& operator <<(ostream& out, Value& v) {
 		out << v.tab(v.depth) << '"' << v.GetKey() << '"' << ": ";
-		if (v.GetContent() != "") {
+		if (v.GetContent() != "0")
 			out << v.GetContent();
-			if (v.next != nullptr)out << ",";
-			out << endl;
-		}
 		if (v.data != nullptr) {
 			out << "{" << '\n' << *v.data << v.tab(v.depth) << "}" << '\n';
 		}
 
 		if (v.next != nullptr) {
-			out << *v.next;
+			out <<"," << endl << *v.next;
 		}
 
 		return out;
-
 	};
 
 	string GetLeafs()

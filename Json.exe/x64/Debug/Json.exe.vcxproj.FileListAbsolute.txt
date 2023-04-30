@@ -1,3 +1,8 @@
 D:\git_reps\Json\Json.exe\x64\Debug\Json.exe.vcxproj.AssemblyReference.cache
 D:\git_reps\Json\Json.exe\x64\Debug\Json.exe.vcxproj.CopyComplete
+<<<<<<< HEAD
+C:\Users\ipnnr\source\repos\Json\Json.exe\x64\Debug\Json.exe.vcxproj.AssemblyReference.cache
+C:\Users\ipnnr\source\repos\Json\Json.exe\x64\Debug\Json.exe.vcxproj.CopyComplete
+=======
 D:\git_reps\Json\Json.exe\x64\Debug\Json.exe.vcxproj.SuggestedBindingRedirects.cache
+>>>>>>> pr/4
