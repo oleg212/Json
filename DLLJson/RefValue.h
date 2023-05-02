@@ -1,7 +1,7 @@
 #pragma once
 
 #include <msclr\marshal_cppstd.h>
-#include "Value.h"
+#include "../StatLibJson/Value.h"
 
 using namespace System;
 using namespace System::IO;

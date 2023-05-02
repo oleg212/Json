@@ -48,27 +48,41 @@ public:
 	void SetContent(string _content) {
 		cur->SetContent(_content);
 	}
+	void SetNext(Value* _next) {
+		cur->setnext(_next);
+	}
 	void delcur() {
 		if (cur == nullptr) return;
+		Value* tmp = cur;
 		if (path.empty())
 		{
-			Value* tmp = cur;
 			cur = nullptr;
 			delete tmp;
 			return;
+		} 
+
+		GoBack();
+		if (cur->getdata() == tmp) {
+			cur->setdata(tmp->getnext());
+			tmp->setnext(nullptr);
 		}
-		Value* tmp = cur; 
-		cur = path.top();
-		path.pop();
-		if (tmp->getnext() != nullptr)
+		else {
+			cur->setnext(tmp->getnext());
+			tmp->setnext(nullptr);
+		}
+		delete tmp;
+		//cur = path.top();
+		//path.pop();
+		//path.top()->setnext(cur->getnext());
+		/*if (tmp->getnext() != nullptr)
 		{
 			if (cur->getdata() == tmp)
 				cur->setdata(tmp->getnext());
 			if (cur->getnext() == tmp)
 				cur->setnext(tmp->getnext());
 			tmp->setnext(nullptr);
-		}
-		delete tmp;
+		}*/
+
 	}
 	bool isempty() { return path.empty(); }
 	string show() {

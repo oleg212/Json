@@ -55,7 +55,7 @@ public:
 	string tab(int d) {
 		string res;
 		for (int i = 0; i < d; i++) {
-			res += "   ";
+			res += "        ";
 		}
 		return res;
 	}

@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\git_reps\Json\statLibJson</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ipnnr\source\repos\Json\StatLibJson</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:twoPhase-
  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
