@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "RefValue.h"
-#include "Json.h"
+#include "../StatLibJson/Json.h"
 
 namespace Json_net
 {
@@ -101,10 +101,10 @@ namespace Json_net
 			else throw - 1;
 		}
 		void GoRight() {
-			if (!p->GetCur()) throw - 1;
+			if (!p->GetCur()) return;
 			if (p->GetCur()->getdata() != nullptr)
 				p->GoRight();
-			else { throw - 1; }
+			else { return; }
 		}
 		void GoBack() {
 			if (!p->isempty()) p->GoBack();
