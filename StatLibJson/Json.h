@@ -78,16 +78,16 @@ public:
 		{
 			if (cur->getdata() == tmp)
 				cur->setdata(tmp->getnext());
-			if (cur->getnext() == tmp)
+				tmp->setnext(nullptr);
+			}
+			else {
 				cur->setnext(tmp->getnext());
-			tmp->setnext(nullptr);
-		}*/
 
-	}
+				tmp->setnext(nullptr);
+			}
+			delete tmp;
+
 	bool isempty() { return path.empty(); }
-	string show() {
-		return cur->GetKey() + ":" + cur->GetContent() + '\n';
-	}
 };
 
 class Json {
@@ -134,6 +134,7 @@ public:
 		else out << "empty" << endl;
 		return out;
 	}
+	void parse();
 	friend istream& operator>>(istream& istr, Json& json)
 	{
 		//string temp;
@@ -141,9 +142,9 @@ public:
 		//string key = "";
 		//string val = "";
 		//int type; //1 - string, 2 - int, 3 - array
-		//bool state = 1; // мы считываем либо ключ либо значение
+		//bool state = 1; // Г¬Г» Г±Г·ГЁГІГ»ГўГ ГҐГ¬ Г«ГЁГЎГ® ГЄГ«ГѕГ· Г«ГЁГЎГ® Г§Г­Г Г·ГҐГ­ГЁГҐ
 		//char cur = '0';
-		//bool rb = 0;	//ждет ли массив первое значение
+		//bool rb = 0;	//Г¦Г¤ГҐГІ Г«ГЁ Г¬Г Г±Г±ГЁГў ГЇГҐГ°ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ
 		//getline(istr, temp);
 
 		//getline(istr, temp);
