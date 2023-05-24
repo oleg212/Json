@@ -48,32 +48,31 @@ public:
 	void SetContent(string _content) {
 		cur->SetContent(_content);
 	}
+	void SetNext(Value* _next) {
+		cur->setnext(_next);
+	}
 	void delcur() {
-		if (cur == nullptr) return;
-		if (path.empty())
-		{
+			if (cur == nullptr) return;
 			Value* tmp = cur;
-			cur = nullptr;
-			delete tmp;
-			return;
-		}
-		Value* tmp = cur; 
-		cur = path.top();
-		path.pop();
-		if (tmp->getnext() != nullptr)
-		{
-			if (cur->getdata() == tmp)
+			if (path.empty())
+			{
+				cur = nullptr;
+				delete tmp;
+				return;
+			}
+
+			GoBack();
+			if (cur->getdata() == tmp) {
 				cur->setdata(tmp->getnext());
-			if (cur->getnext() == tmp)
+				tmp->setnext(nullptr);
+			}
+			else {
 				cur->setnext(tmp->getnext());
-			tmp->setnext(nullptr);
+				tmp->setnext(nullptr);
+			}
+			delete tmp;
 		}
-		delete tmp;
-	}
 	bool isempty() { return path.empty(); }
-	string show() {
-		return cur->GetKey() + ":" + cur->GetContent() + '\n';
-	}
 };
 
 class Json {
@@ -120,6 +119,7 @@ public:
 		else out << "empty" << endl;
 		return out;
 	}
+	void parse();
 	friend istream& operator>>(istream& istr, Json& json)
 	{
 		//string temp;
