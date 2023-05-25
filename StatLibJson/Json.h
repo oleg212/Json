@@ -2,6 +2,7 @@
 #include "Value.h"
 #include <sstream>
 #include <stack>
+
 using namespace std;
 
 class Pointer {
@@ -59,7 +60,7 @@ public:
 			cur = nullptr;
 			delete tmp;
 			return;
-		} 
+		}
 
 		GoBack();
 		if (cur->getdata() == tmp) {
@@ -71,23 +72,24 @@ public:
 			tmp->setnext(nullptr);
 		}
 		delete tmp;
-		//cur = path.top();
-		//path.pop();
-		//path.top()->setnext(cur->getnext());
-		/*if (tmp->getnext() != nullptr)
+		cur = path.top();
+		path.pop();
+		path.top()->setnext(cur->getnext());
+		if (tmp->getnext() != nullptr)
 		{
 			if (cur->getdata() == tmp)
 				cur->setdata(tmp->getnext());
-				tmp->setnext(nullptr);
-			}
-			else {
-				cur->setnext(tmp->getnext());
+			tmp->setnext(nullptr);
+		}
+		else {
+			cur->setnext(tmp->getnext());
 
-				tmp->setnext(nullptr);
-			}
-			delete tmp;
+			tmp->setnext(nullptr);
+		}
+		delete tmp;
+		}
 
-	bool isempty() { return path.empty(); }
+		bool isempty() { return path.empty(); }
 };
 
 class Json {
@@ -219,7 +221,7 @@ public:
 			getline(istr, temp);
 			file += temp;
 		}
-		//string* tokens;
+		string* tokens;
 		int l = file.length();
 		int type; //1 - string, 2 - int, 3 - array
 		int depth = 1;
@@ -292,7 +294,7 @@ public:
 		}
 		
 	}
-	Value* GetCur() { /*if (p->GetCur() == nullptr) return Root;*/ return p->GetCur(); }
+	Value* GetCur() { if (p->GetCur() == nullptr) return Root; return p->GetCur(); }
 	bool HasNext() { return p->HasNext(); }
 	void GoNext() {
 		if (!p->GetCur()) throw -1;

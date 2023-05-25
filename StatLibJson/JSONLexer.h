@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include "antlr4\antlr4-runtime.h"
 
 
 
@@ -12,8 +12,8 @@
 class  JSONLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, STRING = 6, NUMBER = 7, 
-    WS = 8
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
+    STRING = 8, NUMBER = 9, WS = 10
   };
 
   explicit JSONLexer(antlr4::CharStream *input);

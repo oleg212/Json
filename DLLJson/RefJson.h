@@ -69,10 +69,10 @@ namespace Json_net
 		
 		void ReadFromFile(String^ path)
 		{
-			string spath = msclr::interop::marshal_as<std::string>(path);
-			std::ifstream file(spath);
-			file >> *js;
-			file.close();
+			//string spath = msclr::interop::marshal_as<std::string>(path);
+			//std::ifstream file(spath);
+			js->parse();
+			//file.close();
 		}
 
 		Pointer* GetPointer() { return js->GetPointer(); }

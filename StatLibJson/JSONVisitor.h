@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include "antlr4\antlr4-runtime.h"
 #include "JSONParser.h"
 
 
@@ -21,17 +21,15 @@ public:
    */
     virtual std::any visitJson(JSONParser::JsonContext *context) = 0;
 
-    virtual std::any visitObj(JSONParser::ObjContext *context) = 0;
+    virtual std::any visitObject(JSONParser::ObjectContext *context) = 0;
 
     virtual std::any visitPair(JSONParser::PairContext *context) = 0;
 
-    virtual std::any visitStr(JSONParser::StrContext *context) = 0;
+    virtual std::any visitArray(JSONParser::ArrayContext *context) = 0;
 
-    virtual std::any visitInt(JSONParser::IntContext *context) = 0;
+    virtual std::any visitElement(JSONParser::ElementContext *context) = 0;
 
-    virtual std::any visitObject(JSONParser::ObjectContext *context) = 0;
-
-    virtual std::any visitNull(JSONParser::NullContext *context) = 0;
+    virtual std::any visitValue(JSONParser::ValueContext *context) = 0;
 
 
 };

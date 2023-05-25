@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include "antlr4\antlr4-runtime.h"
 
 
 
@@ -12,12 +12,13 @@
 class  JSONParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, STRING = 6, NUMBER = 7, 
-    WS = 8
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
+    STRING = 8, NUMBER = 9, WS = 10
   };
 
   enum {
-    RuleJson = 0, RuleObj = 1, RulePair = 2, RuleValue = 3
+    RuleJson = 0, RuleObject = 1, RulePair = 2, RuleArray = 3, RuleElement = 4, 
+    RuleValue = 5
   };
 
   explicit JSONParser(antlr4::TokenStream *input);
@@ -38,15 +39,17 @@ public:
 
 
   class JsonContext;
-  class ObjContext;
+  class ObjectContext;
   class PairContext;
+  class ArrayContext;
+  class ElementContext;
   class ValueContext; 
 
   class  JsonContext : public antlr4::ParserRuleContext {
   public:
     JsonContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ValueContext *value();
+    ObjectContext *object();
     antlr4::tree::TerminalNode *EOF();
 
 
@@ -56,9 +59,9 @@ public:
 
   JsonContext* json();
 
-  class  ObjContext : public antlr4::ParserRuleContext {
+  class  ObjectContext : public antlr4::ParserRuleContext {
   public:
-    ObjContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    ObjectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<PairContext *> pair();
     PairContext* pair(size_t i);
@@ -68,14 +71,14 @@ public:
    
   };
 
-  ObjContext* obj();
+  ObjectContext* object();
 
   class  PairContext : public antlr4::ParserRuleContext {
   public:
     PairContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *STRING();
-    ValueContext *value();
+    ElementContext *element();
 
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -84,52 +87,45 @@ public:
 
   PairContext* pair();
 
+  class  ArrayContext : public antlr4::ParserRuleContext {
+  public:
+    ArrayContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    std::vector<ElementContext *> element();
+    ElementContext* element(size_t i);
+
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ArrayContext* array();
+
+  class  ElementContext : public antlr4::ParserRuleContext {
+  public:
+    ElementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    ValueContext *value();
+    ObjectContext *object();
+    ArrayContext *array();
+
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ElementContext* element();
+
   class  ValueContext : public antlr4::ParserRuleContext {
   public:
     ValueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-   
-    ValueContext() = default;
-    void copyFrom(ValueContext *context);
-    using antlr4::ParserRuleContext::copyFrom;
-
     virtual size_t getRuleIndex() const override;
-
-   
-  };
-
-  class  StrContext : public ValueContext {
-  public:
-    StrContext(ValueContext *ctx);
-
     antlr4::tree::TerminalNode *STRING();
-
-    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  NullContext : public ValueContext {
-  public:
-    NullContext(ValueContext *ctx);
-
-
-    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  IntContext : public ValueContext {
-  public:
-    IntContext(ValueContext *ctx);
-
     antlr4::tree::TerminalNode *NUMBER();
 
-    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  ObjectContext : public ValueContext {
-  public:
-    ObjectContext(ValueContext *ctx);
-
-    ObjContext *obj();
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
   };
 
   ValueContext* value();

@@ -1,1 +1,11 @@
-﻿
+﻿  Main.cpp
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Value.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(99,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(105,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(106,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(116,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(117,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(225,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(226,7): warning C4101: 'type': unreferenced local variable
+C:\Users\ipnnr\source\repos\Json\StatLibJson\Json.h(224,11): warning C4101: 'tokens': unreferenced local variable
+  Json.exe.vcxproj -> C:\Users\ipnnr\source\repos\Json\x64\Debug\Json.exe.exe

@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "antlr4-runtime.h"
+#include "antlr4\antlr4-runtime.h"
 #include "JSONVisitor.h"
 
 
@@ -19,7 +19,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitObj(JSONParser::ObjContext *ctx) override {
+  virtual std::any visitObject(JSONParser::ObjectContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -27,19 +27,15 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual std::any visitStr(JSONParser::StrContext *ctx) override {
+  virtual std::any visitArray(JSONParser::ArrayContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitInt(JSONParser::IntContext *ctx) override {
+  virtual std::any visitElement(JSONParser::ElementContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitObject(JSONParser::ObjectContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual std::any visitNull(JSONParser::NullContext *ctx) override {
+  virtual std::any visitValue(JSONParser::ValueContext *ctx) override {
     return visitChildren(ctx);
   }
 

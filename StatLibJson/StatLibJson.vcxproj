@@ -106,6 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -131,10 +132,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="JSONBaseVisitor.cpp" />
+    <ClCompile Include="JSONLexer.cpp" />
+    <ClCompile Include="JSONParser.cpp" />
+    <ClCompile Include="JSONUserVisitor.cpp" />
+    <ClCompile Include="JSONVisitor.cpp" />
     <ClCompile Include="StatLibLinker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Json.h" />
+    <ClInclude Include="JSONBaseVisitor.h" />
+    <ClInclude Include="JSONLexer.h" />
+    <ClInclude Include="JSONParser.h" />
+    <ClInclude Include="JSONUserVisitor.h" />
+    <ClInclude Include="JSONVisitor.h" />
     <ClInclude Include="Value.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -52,27 +52,30 @@ void jsonParserInitialize() {
 #endif
   auto staticData = std::make_unique<JSONParserStaticData>(
     std::vector<std::string>{
-      "json", "obj", "pair", "value"
+      "json", "object", "pair", "array", "element", "value"
     },
     std::vector<std::string>{
-      "", "'{'", "','", "'}'", "':'", "'null'"
+      "", "'{'", "','", "'}'", "':'", "'true'", "'false'", "'null'"
     },
     std::vector<std::string>{
-      "", "", "", "", "", "", "STRING", "NUMBER", "WS"
+      "", "", "", "", "", "", "", "", "STRING", "NUMBER", "WS"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,8,37,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,1,0,1,1,1,1,1,1,1,1,
-  	5,1,16,8,1,10,1,12,1,19,9,1,1,1,1,1,1,1,1,1,3,1,25,8,1,1,2,1,2,1,2,1,
-  	2,1,3,1,3,1,3,1,3,3,3,35,8,3,1,3,0,0,4,0,2,4,6,0,0,37,0,8,1,0,0,0,2,24,
-  	1,0,0,0,4,26,1,0,0,0,6,34,1,0,0,0,8,9,3,6,3,0,9,10,5,0,0,1,10,1,1,0,0,
-  	0,11,12,5,1,0,0,12,17,3,4,2,0,13,14,5,2,0,0,14,16,3,4,2,0,15,13,1,0,0,
-  	0,16,19,1,0,0,0,17,15,1,0,0,0,17,18,1,0,0,0,18,20,1,0,0,0,19,17,1,0,0,
-  	0,20,21,5,3,0,0,21,25,1,0,0,0,22,23,5,1,0,0,23,25,5,3,0,0,24,11,1,0,0,
-  	0,24,22,1,0,0,0,25,3,1,0,0,0,26,27,5,6,0,0,27,28,5,4,0,0,28,29,3,6,3,
-  	0,29,5,1,0,0,0,30,35,5,6,0,0,31,35,5,7,0,0,32,35,3,2,1,0,33,35,5,5,0,
-  	0,34,30,1,0,0,0,34,31,1,0,0,0,34,32,1,0,0,0,34,33,1,0,0,0,35,7,1,0,0,
-  	0,3,17,24,34
+  	4,1,10,49,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,1,0,1,0,1,0,
+  	1,1,1,1,1,1,1,1,5,1,20,8,1,10,1,12,1,23,9,1,1,1,1,1,1,2,1,2,1,2,1,2,1,
+  	3,1,3,1,3,1,3,5,3,35,8,3,10,3,12,3,38,9,3,1,3,1,3,1,4,1,4,1,4,3,4,45,
+  	8,4,1,5,1,5,1,5,0,0,6,0,2,4,6,8,10,0,1,1,0,5,9,46,0,12,1,0,0,0,2,15,1,
+  	0,0,0,4,26,1,0,0,0,6,30,1,0,0,0,8,44,1,0,0,0,10,46,1,0,0,0,12,13,3,2,
+  	1,0,13,14,5,0,0,1,14,1,1,0,0,0,15,16,5,1,0,0,16,21,3,4,2,0,17,18,5,2,
+  	0,0,18,20,3,4,2,0,19,17,1,0,0,0,20,23,1,0,0,0,21,19,1,0,0,0,21,22,1,0,
+  	0,0,22,24,1,0,0,0,23,21,1,0,0,0,24,25,5,3,0,0,25,3,1,0,0,0,26,27,5,8,
+  	0,0,27,28,5,4,0,0,28,29,3,8,4,0,29,5,1,0,0,0,30,31,5,1,0,0,31,36,3,8,
+  	4,0,32,33,5,2,0,0,33,35,3,8,4,0,34,32,1,0,0,0,35,38,1,0,0,0,36,34,1,0,
+  	0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,5,3,0,0,40,7,1,0,
+  	0,0,41,45,3,10,5,0,42,45,3,2,1,0,43,45,3,6,3,0,44,41,1,0,0,0,44,42,1,
+  	0,0,0,44,43,1,0,0,0,45,9,1,0,0,0,46,47,7,0,0,0,47,11,1,0,0,0,3,21,36,
+  	44
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -127,8 +130,8 @@ JSONParser::JsonContext::JsonContext(ParserRuleContext *parent, size_t invokingS
   : ParserRuleContext(parent, invokingState) {
 }
 
-JSONParser::ValueContext* JSONParser::JsonContext::value() {
-  return getRuleContext<JSONParser::ValueContext>(0);
+JSONParser::ObjectContext* JSONParser::JsonContext::object() {
+  return getRuleContext<JSONParser::ObjectContext>(0);
 }
 
 tree::TerminalNode* JSONParser::JsonContext::EOF() {
@@ -161,9 +164,9 @@ JSONParser::JsonContext* JSONParser::json() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(8);
-    value();
-    setState(9);
+    setState(12);
+    object();
+    setState(13);
     match(JSONParser::EOF);
    
   }
@@ -176,36 +179,36 @@ JSONParser::JsonContext* JSONParser::json() {
   return _localctx;
 }
 
-//----------------- ObjContext ------------------------------------------------------------------
+//----------------- ObjectContext ------------------------------------------------------------------
 
-JSONParser::ObjContext::ObjContext(ParserRuleContext *parent, size_t invokingState)
+JSONParser::ObjectContext::ObjectContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<JSONParser::PairContext *> JSONParser::ObjContext::pair() {
+std::vector<JSONParser::PairContext *> JSONParser::ObjectContext::pair() {
   return getRuleContexts<JSONParser::PairContext>();
 }
 
-JSONParser::PairContext* JSONParser::ObjContext::pair(size_t i) {
+JSONParser::PairContext* JSONParser::ObjectContext::pair(size_t i) {
   return getRuleContext<JSONParser::PairContext>(i);
 }
 
 
-size_t JSONParser::ObjContext::getRuleIndex() const {
-  return JSONParser::RuleObj;
+size_t JSONParser::ObjectContext::getRuleIndex() const {
+  return JSONParser::RuleObject;
 }
 
 
-std::any JSONParser::ObjContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any JSONParser::ObjectContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
-    return parserVisitor->visitObj(this);
+    return parserVisitor->visitObject(this);
   else
     return visitor->visitChildren(this);
 }
 
-JSONParser::ObjContext* JSONParser::obj() {
-  ObjContext *_localctx = _tracker.createInstance<ObjContext>(_ctx, getState());
-  enterRule(_localctx, 2, JSONParser::RuleObj);
+JSONParser::ObjectContext* JSONParser::object() {
+  ObjectContext *_localctx = _tracker.createInstance<ObjectContext>(_ctx, getState());
+  enterRule(_localctx, 2, JSONParser::RuleObject);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -216,44 +219,25 @@ JSONParser::ObjContext* JSONParser::obj() {
     exitRule();
   });
   try {
-    setState(24);
+    enterOuterAlt(_localctx, 1);
+    setState(15);
+    match(JSONParser::T__0);
+    setState(16);
+    pair();
+    setState(21);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 1, _ctx)) {
-    case 1: {
-      enterOuterAlt(_localctx, 1);
-      setState(11);
-      match(JSONParser::T__0);
-      setState(12);
-      pair();
+    _la = _input->LA(1);
+    while (_la == JSONParser::T__1) {
       setState(17);
+      match(JSONParser::T__1);
+      setState(18);
+      pair();
+      setState(23);
       _errHandler->sync(this);
       _la = _input->LA(1);
-      while (_la == JSONParser::T__1) {
-        setState(13);
-        match(JSONParser::T__1);
-        setState(14);
-        pair();
-        setState(19);
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      }
-      setState(20);
-      match(JSONParser::T__2);
-      break;
     }
-
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(22);
-      match(JSONParser::T__0);
-      setState(23);
-      match(JSONParser::T__2);
-      break;
-    }
-
-    default:
-      break;
-    }
+    setState(24);
+    match(JSONParser::T__2);
    
   }
   catch (RecognitionException &e) {
@@ -275,8 +259,8 @@ tree::TerminalNode* JSONParser::PairContext::STRING() {
   return getToken(JSONParser::STRING, 0);
 }
 
-JSONParser::ValueContext* JSONParser::PairContext::value() {
-  return getRuleContext<JSONParser::ValueContext>(0);
+JSONParser::ElementContext* JSONParser::PairContext::element() {
+  return getRuleContext<JSONParser::ElementContext>(0);
 }
 
 
@@ -310,7 +294,158 @@ JSONParser::PairContext* JSONParser::pair() {
     setState(27);
     match(JSONParser::T__3);
     setState(28);
-    value();
+    element();
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- ArrayContext ------------------------------------------------------------------
+
+JSONParser::ArrayContext::ArrayContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+std::vector<JSONParser::ElementContext *> JSONParser::ArrayContext::element() {
+  return getRuleContexts<JSONParser::ElementContext>();
+}
+
+JSONParser::ElementContext* JSONParser::ArrayContext::element(size_t i) {
+  return getRuleContext<JSONParser::ElementContext>(i);
+}
+
+
+size_t JSONParser::ArrayContext::getRuleIndex() const {
+  return JSONParser::RuleArray;
+}
+
+
+std::any JSONParser::ArrayContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
+    return parserVisitor->visitArray(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+JSONParser::ArrayContext* JSONParser::array() {
+  ArrayContext *_localctx = _tracker.createInstance<ArrayContext>(_ctx, getState());
+  enterRule(_localctx, 6, JSONParser::RuleArray);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(30);
+    match(JSONParser::T__0);
+    setState(31);
+    element();
+    setState(36);
+    _errHandler->sync(this);
+    _la = _input->LA(1);
+    while (_la == JSONParser::T__1) {
+      setState(32);
+      match(JSONParser::T__1);
+      setState(33);
+      element();
+      setState(38);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+    }
+    setState(39);
+    match(JSONParser::T__2);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- ElementContext ------------------------------------------------------------------
+
+JSONParser::ElementContext::ElementContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+JSONParser::ValueContext* JSONParser::ElementContext::value() {
+  return getRuleContext<JSONParser::ValueContext>(0);
+}
+
+JSONParser::ObjectContext* JSONParser::ElementContext::object() {
+  return getRuleContext<JSONParser::ObjectContext>(0);
+}
+
+JSONParser::ArrayContext* JSONParser::ElementContext::array() {
+  return getRuleContext<JSONParser::ArrayContext>(0);
+}
+
+
+size_t JSONParser::ElementContext::getRuleIndex() const {
+  return JSONParser::RuleElement;
+}
+
+
+std::any JSONParser::ElementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
+    return parserVisitor->visitElement(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+JSONParser::ElementContext* JSONParser::element() {
+  ElementContext *_localctx = _tracker.createInstance<ElementContext>(_ctx, getState());
+  enterRule(_localctx, 8, JSONParser::RuleElement);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    setState(44);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 2, _ctx)) {
+    case 1: {
+      enterOuterAlt(_localctx, 1);
+      setState(41);
+      value();
+      break;
+    }
+
+    case 2: {
+      enterOuterAlt(_localctx, 2);
+      setState(42);
+      object();
+      break;
+    }
+
+    case 3: {
+      enterOuterAlt(_localctx, 3);
+      setState(43);
+      array();
+      break;
+    }
+
+    default:
+      break;
+    }
    
   }
   catch (RecognitionException &e) {
@@ -328,74 +463,31 @@ JSONParser::ValueContext::ValueContext(ParserRuleContext *parent, size_t invokin
   : ParserRuleContext(parent, invokingState) {
 }
 
+tree::TerminalNode* JSONParser::ValueContext::STRING() {
+  return getToken(JSONParser::STRING, 0);
+}
+
+tree::TerminalNode* JSONParser::ValueContext::NUMBER() {
+  return getToken(JSONParser::NUMBER, 0);
+}
+
 
 size_t JSONParser::ValueContext::getRuleIndex() const {
   return JSONParser::RuleValue;
 }
 
-void JSONParser::ValueContext::copyFrom(ValueContext *ctx) {
-  ParserRuleContext::copyFrom(ctx);
-}
 
-//----------------- StrContext ------------------------------------------------------------------
-
-tree::TerminalNode* JSONParser::StrContext::STRING() {
-  return getToken(JSONParser::STRING, 0);
-}
-
-JSONParser::StrContext::StrContext(ValueContext *ctx) { copyFrom(ctx); }
-
-
-std::any JSONParser::StrContext::accept(tree::ParseTreeVisitor *visitor) {
+std::any JSONParser::ValueContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
-    return parserVisitor->visitStr(this);
+    return parserVisitor->visitValue(this);
   else
     return visitor->visitChildren(this);
 }
-//----------------- NullContext ------------------------------------------------------------------
 
-JSONParser::NullContext::NullContext(ValueContext *ctx) { copyFrom(ctx); }
-
-
-std::any JSONParser::NullContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
-    return parserVisitor->visitNull(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- IntContext ------------------------------------------------------------------
-
-tree::TerminalNode* JSONParser::IntContext::NUMBER() {
-  return getToken(JSONParser::NUMBER, 0);
-}
-
-JSONParser::IntContext::IntContext(ValueContext *ctx) { copyFrom(ctx); }
-
-
-std::any JSONParser::IntContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
-    return parserVisitor->visitInt(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- ObjectContext ------------------------------------------------------------------
-
-JSONParser::ObjContext* JSONParser::ObjectContext::obj() {
-  return getRuleContext<JSONParser::ObjContext>(0);
-}
-
-JSONParser::ObjectContext::ObjectContext(ValueContext *ctx) { copyFrom(ctx); }
-
-
-std::any JSONParser::ObjectContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<JSONVisitor*>(visitor))
-    return parserVisitor->visitObject(this);
-  else
-    return visitor->visitChildren(this);
-}
 JSONParser::ValueContext* JSONParser::value() {
   ValueContext *_localctx = _tracker.createInstance<ValueContext>(_ctx, getState());
-  enterRule(_localctx, 6, JSONParser::RuleValue);
+  enterRule(_localctx, 10, JSONParser::RuleValue);
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -405,43 +497,16 @@ JSONParser::ValueContext* JSONParser::value() {
     exitRule();
   });
   try {
-    setState(34);
-    _errHandler->sync(this);
-    switch (_input->LA(1)) {
-      case JSONParser::STRING: {
-        _localctx = _tracker.createInstance<JSONParser::StrContext>(_localctx);
-        enterOuterAlt(_localctx, 1);
-        setState(30);
-        match(JSONParser::STRING);
-        break;
-      }
-
-      case JSONParser::NUMBER: {
-        _localctx = _tracker.createInstance<JSONParser::IntContext>(_localctx);
-        enterOuterAlt(_localctx, 2);
-        setState(31);
-        match(JSONParser::NUMBER);
-        break;
-      }
-
-      case JSONParser::T__0: {
-        _localctx = _tracker.createInstance<JSONParser::ObjectContext>(_localctx);
-        enterOuterAlt(_localctx, 3);
-        setState(32);
-        obj();
-        break;
-      }
-
-      case JSONParser::T__4: {
-        _localctx = _tracker.createInstance<JSONParser::NullContext>(_localctx);
-        enterOuterAlt(_localctx, 4);
-        setState(33);
-        match(JSONParser::T__4);
-        break;
-      }
-
-    default:
-      throw NoViableAltException(this);
+    enterOuterAlt(_localctx, 1);
+    setState(46);
+    _la = _input->LA(1);
+    if (!((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 992) != 0))) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
     }
    
   }
