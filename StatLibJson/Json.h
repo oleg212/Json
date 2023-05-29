@@ -19,11 +19,12 @@ public:
 	bool HasUp() { return !isempty(); }
 	void GoNext() { path.push(cur); cur = cur->getnext(); }
 	void GoRight() { path.push(cur); cur = cur->getdata(); }
-	void GoBack() { cur = path.top(); path.pop(); }
+	void GoBack() { if (path.empty()) return; cur = path.top(); path.pop(); }
 	void GoUp() {
+		if (path.empty()) return;
 		Value* prev = cur;
 		GoBack();
-		while (cur->getdata() != prev) {
+		while ((cur->getdata() != prev)) {
 			if (cur->GetDepth() == 1) break;
 			prev = cur;
 			GoBack();
@@ -72,23 +73,7 @@ public:
 			tmp->setnext(nullptr);
 		}
 		delete tmp;
-		cur = path.top();
-		path.pop();
-		path.top()->setnext(cur->getnext());
-		if (tmp->getnext() != nullptr)
-		{
-			if (cur->getdata() == tmp)
-				cur->setdata(tmp->getnext());
-			tmp->setnext(nullptr);
 		}
-		else {
-			cur->setnext(tmp->getnext());
-
-			tmp->setnext(nullptr);
-		}
-		delete tmp;
-		}
-
 		bool isempty() { return path.empty(); }
 };
 
@@ -122,11 +107,17 @@ class Json {
 		}
 		return res;
 	}
+	void pointer_reset() {
+		while (!p->isempty()) {
+			p->GoBack();
+		}
+		p->AddNext(Root);
+	}
 public:
 	Pointer* p;
 	Json() { Root = nullptr; p = new Pointer(); }
 	~Json() {
-		if (p->GetCur())
+		//if (p->GetCur())
 		delete Root;
 		delete p;
 	}
@@ -136,7 +127,7 @@ public:
 		else out << "empty" << endl;
 		return out;
 	}
-	void parse();
+	void parse(string filename);
 	friend istream& operator>>(istream& istr, Json& json)
 	{
 		//string temp;

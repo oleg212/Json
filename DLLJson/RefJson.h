@@ -47,10 +47,10 @@ namespace Json_net
 			js->SetContent(_content); 
 		}
 
-		ostream& operator <<(ostream& out)
+		void print()
 		{
-			out << js;
-			return out;
+			cout << *js;
+			//return out;
 		}
 
 		String^ WriteAsString()
@@ -69,9 +69,10 @@ namespace Json_net
 		
 		void ReadFromFile(String^ path)
 		{
-			//string spath = msclr::interop::marshal_as<std::string>(path);
+			string spath = msclr::interop::marshal_as<std::string>(path);
 			//std::ifstream file(spath);
-			js->parse();
+			//file >> *js;
+			js->parse(spath);
 			//file.close();
 		}
 

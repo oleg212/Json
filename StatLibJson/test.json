@@ -1,5 +1,5 @@
 {
-  "widget": {
+  "Awidget": {
     "debug": "on",
     "window": {
       "title": "Sample Konfabulator Widget",

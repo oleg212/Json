@@ -36,6 +36,7 @@ class JSONUserVisitor : public JSONBaseVisitor {
             }
             std::cout << "}";
             depth--;
+            if(p->GetCur() != nullptr)
             p->GoUp();
             return nullptr;
         }
@@ -43,6 +44,9 @@ class JSONUserVisitor : public JSONBaseVisitor {
         virtual antlrcpp::Any visitPair(JSONParser::PairContext* ctx) override {
 
             tempname = ctx->STRING()->getText();
+            
+            tempname.erase(0, 1);  
+            tempname.erase(tempname.size() - 1); 
             std::cout << "\"" << ctx->STRING()->getText() << "\":";
             visit(ctx->element());
             return nullptr;

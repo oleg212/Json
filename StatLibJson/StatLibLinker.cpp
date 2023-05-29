@@ -4,31 +4,15 @@
 #include "JSONLexer.h"
 #include "JSONParser.h"
 
-void Json::parse()
+void Json::parse(string filename)
 {
-	ifstream file("test.json");
+	ifstream file(filename);
 	std::string s_raw;
-	//file >> s_raw;
 	string temp;
 	while (file) {
 		getline(file,temp);
 		s_raw += temp;
 	}
-	/*int len = s_raw.length();
-	string s = "";
-	bool name = false;
-	for (int i = 0; i < len; i++) {
-		if (s_raw[i] != ' ') {
-			if (s_raw[i] == '"') name = !name;
-			s += s_raw[i];
-		}
-		else {
-			if (name) {
-				s += '_';
-			}
-		}
-	}*/
-
 	string s = s_raw;
 
 	std::stringstream stream(s);
@@ -41,6 +25,8 @@ void Json::parse()
 
 	delete Root;
 	Root = visitor.GetRoot();
+	pointer_reset();
+	return;
 
 
 }
